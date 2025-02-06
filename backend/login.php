@@ -20,7 +20,7 @@ $stmt->execute([$username]);
 $user = $stmt->fetch();
 
 if ($user && password_verify($password, $user['password'])) {
-    echo json_encode(['success' => true]);
+    echo json_encode(['success' => true, 'username' => $user['username'], 'level' => $user['level']]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Identifiants incorrects']);
 }

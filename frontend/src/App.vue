@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-dark text-white min-vh-100">
     <router-view></router-view>
   </div>
 </template>
@@ -11,5 +11,5 @@ export default {
 </script>
 
 <style>
-/* Ajoutez vos styles globaux ici si nécessaire */
+/* Styles globaux */
 </style>
