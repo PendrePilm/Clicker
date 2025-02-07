@@ -60,6 +60,32 @@
       localStorage.removeItem('userLevel');
       this.$router.push('/login');
     },
+    async levelUp() {
+    try {
+      const response = await fetch('http://localhost/clicker2/backend/levelup.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: this.username
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('Félicitations, vous avez passé un niveau !');
+        this.userLevel += 1; // Mettre à jour le niveau dans le frontend
+        this.clicks = 0; // Réinitialiser les clics dans le frontend
+        this.buildings = []; // Réinitialiser les bâtiments dans le frontend
+      } else {
+        alert('Erreur lors de la mise à jour du niveau');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la mise à jour du niveau:', error);
+    }
+  }
   },
 };
   </script>

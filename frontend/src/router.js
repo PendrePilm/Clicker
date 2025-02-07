@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'; // Importez depuis 
 import UserLogin from './views/UserLogin.vue';
 import UserRegister from './views/UserRegister.vue';
 import UserDashboard from './views/UserDashboard.vue';
+import UserNiveau1 from './views/UserNiveau1.vue';  
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,6 +23,10 @@ const router = createRouter({
     {
       path: '/dashboard',
       component: UserDashboard
+    },
+    {
+      path: '/niveau1',
+      component: UserNiveau1
     }
   ]
 });
