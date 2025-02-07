@@ -4,6 +4,8 @@ import UserLogin from './views/UserLogin.vue';
 import UserRegister from './views/UserRegister.vue';
 import UserDashboard from './views/UserDashboard.vue';
 import UserNiveau1 from './views/UserNiveau1.vue';  
+import UserNiveau2 from './views/UserNiveau2.vue';
+import UserNiveau3 from './views/UserNiveau3.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,6 +29,14 @@ const router = createRouter({
     {
       path: '/niveau1',
       component: UserNiveau1
+    },
+    {
+      path: '/niveau2',
+      component: UserNiveau2
+    },
+    {
+      path: '/niveau3',
+      component: UserNiveau3
     }
   ]
 });

@@ -48,10 +48,13 @@ export default {
 
       clicks: 0, // Nombre de clics
       buildings: [
-        { name: 'Ferme', cost: 10, quantity: 0 },
-        { name: 'Usine', cost: 50, quantity: 0 },
-        { name: 'Ville', cost: 100, quantity: 0 },
-      ],
+      { name: 'Swipe a gauche', cost: 10, quantity: 0, passiveRate: 1 }, // 1 clic par seconde
+      { name: 'Swipe a droite', cost: 50, quantity: 0, passiveRate: 5 }, // 5 clics par seconde
+      { name: 'Super Like', cost: 100, quantity: 0, passiveRate: 10 }, // 10 clics par seconde
+      { name: 'Message', cost: 200, quantity: 0, passiveRate: 20 }, // 20 clics par seconde
+      { name: 'Appel', cost: 500, quantity: 0, passiveRate: 50 }, // 50 clics par seconde
+      { name: 'Date', cost: 1000, quantity: 0, passiveRate: 100 }, // 100 clics par seconde
+    ],
     };
   },
   methods: {
@@ -68,7 +71,7 @@ export default {
     async checkLevelUp() {
       // Passer au niveau suivant si l'utilisateur a acheté le dernier bâtiment 10 fois
       const lastBuilding = this.buildings[this.buildings.length - 1];
-      if (lastBuilding.quantity >= 3) {
+      if (lastBuilding.quantity >= 10) {
         this.levelUp();
       }
     },
@@ -97,6 +100,13 @@ export default {
     } catch (error) {
       console.error('Erreur lors de la mise à jour du niveau:', error);
     }
+  },
+  calculatePassiveClicks() {
+    let passiveClicks = 0;
+    this.buildings.forEach(building => {
+      passiveClicks += building.quantity * building.passiveRate;
+    });
+    return passiveClicks;
   },
     buyBuilding(building) {
       if (this.clicks >= building.cost) {
@@ -154,8 +164,6 @@ export default {
       console.error('Erreur lors du chargement des données:', error);
     }
   },
-  
-  
 };
 </script>
 
